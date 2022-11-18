@@ -6,7 +6,7 @@ const validateProductId = (id) => {
   const { error } = idSchema.validate(id);
   if (error) return { type: 'NOT FOUND', message: message.PRODUCT_NOT_FOUND };
 
-  return { type: null, message: ''};
+  return { type: null, message: '' };
 };
 
 module.exports = {

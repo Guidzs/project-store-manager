@@ -1,5 +1,5 @@
 const { productsModel } = require('../models');
-const { validateProductId } = require('./validations')
+const { validateProductId } = require('./validations');
 
 const message = require('../utils/message');
 
