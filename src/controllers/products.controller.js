@@ -16,7 +16,15 @@ const getProductById = async (req, res) => {
   return res.status(status.SUCCESS).json(message);
 };
 
+const saveProduct = async (req, res) => {
+  const { name } = req.body;
+  const { message } = await productsService.saveProduct(name);
+
+  res.status(status.SUCCESS_CREATED).json(message);
+};
+
 module.exports = {
   getProducts,
   getProductById,
+  saveProduct,
 };
