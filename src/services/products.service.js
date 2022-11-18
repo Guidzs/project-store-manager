@@ -1,5 +1,5 @@
 const { productsModel } = require('../models');
-const { validateProductId } = require('./validations');
+const { validateProductId, validateName } = require('./validations');
 
 const message = require('../utils/message');
 
@@ -18,6 +18,9 @@ const getProductById = async (id) => {
 };
 
 const saveProduct = async (name) => {
+  const err = validateName(name);
+  if (err.type) return err;
+
   const newProductId = await productsModel.saveProduct(name);
   const newProduct = await productsModel.getProductById(newProductId);
 

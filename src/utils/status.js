@@ -1,9 +1,13 @@
 const SUCCESS = 200;
 const SUCCESS_CREATED = 201;
+const INVALID = 400;
 const NOT_FOUND = 404;
+const INVALID_FORMAT = 422;
 
 module.exports = {
   SUCCESS,
   NOT_FOUND,
+  INVALID,
   SUCCESS_CREATED,
+  INVALID_FORMAT,
 };

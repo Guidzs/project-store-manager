@@ -18,9 +18,11 @@ const getProductById = async (req, res) => {
 
 const saveProduct = async (req, res) => {
   const { name } = req.body;
-  const { message } = await productsService.saveProduct(name);
+  const { type, message, statusErr } = await productsService.saveProduct(name);
 
-  res.status(status.SUCCESS_CREATED).json(message);
+  if (type) return res.status(statusErr).json({ message });
+
+  return res.status(status.SUCCESS_CREATED).json(message);
 };
 
 module.exports = {
