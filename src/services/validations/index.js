@@ -21,7 +21,6 @@ const validateName = (name) => {
         statusErr: status.INVALID,
       };
     }
-
     if (error.details[0].type === 'string.min') {
       return {
         type: 'Name Invalid',
@@ -30,7 +29,6 @@ const validateName = (name) => {
       };
     }
   }
-
   return { type: null, message: '' };
 };
 
