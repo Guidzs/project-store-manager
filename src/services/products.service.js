@@ -27,8 +27,18 @@ const saveProduct = async (name) => {
   return { type: null, message: newProduct };
 };
 
+const updateProduct = async (id, name) => {
+  const err = validateName(name);
+  if (err.type) return err;
+
+  const newProduct = await productsModel.updateProduct(id, name);
+
+  return { type: null, message: newProduct };
+};
+
 module.exports = {
   findAll,
   getProductById,
   saveProduct,
+  updateProduct,
 };

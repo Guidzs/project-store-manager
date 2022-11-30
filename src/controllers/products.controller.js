@@ -25,8 +25,19 @@ const saveProduct = async (req, res) => {
   return res.status(status.SUCCESS_CREATED).json(message);
 };
 
+const updateProduct = async (req, res) => {
+  const { id } = req.params;
+  const { name } = req.body;
+  const { type, message, statusErr } = await productsService.updateProduct(id, name);
+
+  if (type) return res.status(statusErr).json({ message });
+
+  return res.status(status.SUCCESS).json(message);
+};
+
 module.exports = {
   getProducts,
   getProductById,
   saveProduct,
+  updateProduct,
 };
