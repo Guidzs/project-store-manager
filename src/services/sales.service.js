@@ -3,8 +3,7 @@ const { salesModel } = require('../models');
 const registerSales = async (itens) => {
   const insertId = await salesModel.registerSales(itens);
 
-  return { 
-    type: null,
+  return {
     message: {
       id: insertId,
       itemsSold: itens,

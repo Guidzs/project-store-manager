@@ -35,20 +35,19 @@ const checksProductId = async (req, res, next) => {
 const checksQuantity = async (req, res, next) => {
   const sales = req.body;
 
+  const quantitiValid = sales
+  .some((sale) => sale.quantity <= 0);
+  if (quantitiValid) {
+    return res
+      .status(status.INVALID_FORMAT)
+      .json({ message: QUANTITY_INVALID });
+  }
+
   const quantityExists = sales.every((sale) => !sale.quantity);
   if (quantityExists) {
     return res
       .status(status.INVALID)
       .json({ message: QUANTITY_REQUIRED });
-  }
-
-  const quantitiValid = !sales
-    .every((sale) => sale.quantity >= 0);
-
-  if (quantitiValid) {
-    return res
-      .status(status.INVALID_FORMAT)
-      .json({ message: QUANTITY_INVALID });
   }
   
   next();
