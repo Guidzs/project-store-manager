@@ -12,10 +12,17 @@ const registerSales = async (itens) => {
 };
 
 const getAllSales = async () => {
+  const result = await salesModel.getAllSales();
+  return { message: result };
+};
 
+const getSaleById = async (id) => {
+  const result = await salesModel.getSaleById(id);
+  return { message: result };
 };
 
 module.exports = {
   registerSales,
   getAllSales,
+  getSaleById,
 };

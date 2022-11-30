@@ -1,4 +1,4 @@
-const { productsModel } = require('../models');
+const { productsModel, salesModel } = require('../models');
 
 const status = require('../utils/status');
 const {
@@ -6,6 +6,7 @@ const {
   PRODUCT_REQUIRED,
   QUANTITY_REQUIRED,
   QUANTITY_INVALID,
+  SALE_NOT_FOUND,
 } = require('../utils/message');
 
 const checksProductId = async (req, res, next) => {
@@ -53,7 +54,19 @@ const checksQuantity = async (req, res, next) => {
   next();
 };
 
+const checksSaleId = async (req, res, next) => {
+  const { id } = req.params;
+  const allSales = await salesModel.getAllSales();
+
+  const idValid = !allSales.some((sale) => sale.saleId === Number(id));
+  if (idValid) {
+    return res.status(status.NOT_FOUND).json({ message: SALE_NOT_FOUND });
+  }
+  next();
+};
+
 module.exports = {
   checksProductId,
   checksQuantity,
+  checksSaleId,
 };

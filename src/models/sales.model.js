@@ -14,16 +14,29 @@ const registerSales = async (itens) => {
 };
 
 const getAllSales = async () => {
-  // const [result] = await connection.execute(
-  //   'SELECT * FROM StoreManager.sales',
-  // );
-  // const [res] = await connection.execute(
-  //   'SELECT * FROM StoreManager.sales_products',
-  // );
-  // return {};
+  const [result] = await connection.execute(
+    `SELECT SP.sale_id AS saleId, SL.date, SP.product_id AS productId, SP.quantity
+    FROM StoreManager.sales AS SL
+    INNER JOIN StoreManager.sales_products AS SP
+    ON SL.id = SP.sale_id`,
+  );
+  return result;
+};
+
+const getSaleById = async (id) => {
+  const [result] = await connection.execute(
+    `SELECT SL.date, SP.product_id AS productId, SP.quantity
+    FROM StoreManager.sales AS SL
+    INNER JOIN StoreManager.sales_products AS SP
+    ON SL.id = SP.sale_id
+    WHERE SL.id = ?`,
+    [id],
+  );
+  return result;
 };
 
 module.exports = {
   registerSales,
   getAllSales,
+  getSaleById,  
 };
