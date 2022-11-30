@@ -5,12 +5,10 @@ const registerSales = async (itens) => {
     'INSERT INTO sales (date) value (NOW());',
   );
 
-  itens.forEach(async (item) => {
-    Promise.all(await connection.execute(
+  itens.forEach(async (item) => connection.execute(
       'INSERT INTO sales_products (sale_id, product_id, quantity) values (?, ?, ?);',
       [+insertId, item.productId, item.quantity],
     ));
-  });
   return insertId;
 };
 

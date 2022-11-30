@@ -14,7 +14,7 @@ const getProductById = async (id) => {
 
   const product = await productsModel.getProductById(id);
   if (product) return { type: null, message: product };
-  return { type: 'NOT FOUND', message: message.PRODUCT_NOT_FOUND };
+  return { type: true, message: message.PRODUCT_NOT_FOUND };
 };
 
 const saveProduct = async (name) => {
