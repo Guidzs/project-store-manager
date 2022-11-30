@@ -11,6 +11,11 @@ const registerSales = async (itens) => {
   };
 };
 
+const getAllSales = async () => {
+
+};
+
 module.exports = {
   registerSales,
+  getAllSales,
 };

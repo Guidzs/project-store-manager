@@ -5,7 +5,7 @@ const registerSales = async (itens) => {
     'INSERT INTO StoreManager.sales (date) value (NOW());',
   );
 
-  const result = itens.map(async (item) => await connection.execute(
+  const result = itens.map((item) => connection.execute(
       'INSERT INTO StoreManager.sales_products (sale_id, product_id, quantity) values (?, ?, ?);',
       [insertId, item.productId, item.quantity],
     ));
@@ -13,6 +13,17 @@ const registerSales = async (itens) => {
   return insertId;
 };
 
+const getAllSales = async () => {
+  // const [result] = await connection.execute(
+  //   'SELECT * FROM StoreManager.sales',
+  // );
+  // const [res] = await connection.execute(
+  //   'SELECT * FROM StoreManager.sales_products',
+  // );
+  // return {};
+};
+
 module.exports = {
   registerSales,
+  getAllSales,
 };
