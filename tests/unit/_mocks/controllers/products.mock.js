@@ -12,9 +12,24 @@ const mockGetProducts = {
       id: 3,
       name: 'Escudo do Capitão América',
     },
-  ],
+  ]
+};
+
+const mockGetByIdErr = {
+  type: true,
+  message: "Product not found",
+};
+
+const mockGetById = {
+  type: null,
+  message: {
+    "id": 1,
+    "name": "Martelo de Thor"
+  },
 };
 
 module.exports = {
   mockGetProducts,
+  mockGetByIdErr,
+  mockGetById,
 };
