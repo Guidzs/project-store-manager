@@ -9,7 +9,15 @@ const mockOneProduct = {
   "name": "Martelo de Thor"
 };
 
+const mockGetByName = [
+  {
+    "id": 1,
+    "name": "Martelo de Thor"
+  }
+];
+
 module.exports = {
   mockAllProducts,
   mockOneProduct,
+  mockGetByName,
 };

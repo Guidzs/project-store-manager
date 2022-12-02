@@ -5,7 +5,7 @@ const message = require('../utils/message');
 
 const findAll = async () => {
   const products = await productsModel.findAll();
-  return { type: null, message: products };
+  return { message: products };
 };
 
 const getProductById = async (id) => {

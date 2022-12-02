@@ -21,7 +21,7 @@ const getProductByName = async (req, res) => {
 
   if (q.length === 0) {
     const { message } = await productsService.findAll();
-  res.status(status.SUCCESS).json(message); 
+    res.status(status.SUCCESS).json(message); 
   }
 
   const { message } = await productsService.getProductByName(q);

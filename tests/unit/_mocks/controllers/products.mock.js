@@ -28,8 +28,18 @@ const mockGetById = {
   },
 };
 
+const mockGetByName = {
+  message: [
+    {
+      "id": 1,
+      "name": "Martelo de Thor"
+    }
+  ]
+};
+
 module.exports = {
   mockGetProducts,
   mockGetByIdErr,
   mockGetById,
+  mockGetByName,
 };
