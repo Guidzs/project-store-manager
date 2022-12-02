@@ -45,10 +45,19 @@ const mockSaveProduct = {
   },
 };
 
+const mockUpdateResult = {
+  type: null,
+  message: {
+    "id": 1,
+    "name": "Martelo do Batman"
+  },
+};
+
 module.exports = {
   mockGetProducts,
   mockGetByIdErr,
   mockGetById,
   mockGetByName,
   mockSaveProduct,
+  mockUpdateResult,
 };

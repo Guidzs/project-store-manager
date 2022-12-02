@@ -64,4 +64,15 @@ describe('Testa a camada Model', () => {
     });
     afterEach(sinon.restore);
   });
+
+  describe('Testa a função updateProduct', () => {
+    it('se é possivel atualizat um produto', async () => {
+      sinon.stub(connection, 'execute').resolves();
+
+      const result = await productsModel.updateProduct(1, 'Martelo de Thor');
+
+      expect(result).to.be.deep.equal(mocksModel.mockOneProduct);
+    });
+    afterEach(sinon.restore);
+  });
 });

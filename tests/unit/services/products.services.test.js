@@ -64,4 +64,16 @@ describe('Testa a camada Service', () => {
     });
     afterEach(sinon.restore);
   });
+
+  describe('Testa a função updateProduct', () => {
+    it('se é possivel atualizar um produto', async () => {
+      sinon.stub(productsModel, 'updateProduct').resolves(mocksService.mockOneProduct);
+
+      const result = await productsService.updateProduct(1, 'Martelo de Thor');
+
+      expect(result.type).to.be.equal(null);
+      expect(result.message).to.be.deep.equal(mocksService.mockOneProduct);
+    });
+    afterEach(sinon.restore);
+  });
 });

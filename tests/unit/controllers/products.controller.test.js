@@ -112,4 +112,25 @@ describe('Testes da camada Controller', () => {
     });
     afterEach(sinon.restore);
   });
+
+  describe('Testa a função updateProduct', () => {
+    it('se é possivel atualizar o produto', async () => {
+      const req = {
+        params: { id: 1 },
+        body: { name: 'Martelo do Batman' },
+      };
+      const res = {};
+
+      sinon.stub(productsService, 'updateProduct').resolves(mocksController.mockUpdateResult);
+
+      res.status = sinon.stub().returns(res);
+      res.json = sinon.stub().returns();
+
+      await productsController.updateProduct(req, res);
+
+      expect(res.status).to.have.been.calledWith(200);
+      expect(res.json).to.have.been.calledWith(mocksController.mockUpdateResult.message);
+    });
+    afterEach(sinon.restore);
+  });
 });
