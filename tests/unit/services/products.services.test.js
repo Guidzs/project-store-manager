@@ -76,4 +76,15 @@ describe('Testa a camada Service', () => {
     });
     afterEach(sinon.restore);
   });
+
+  describe('Testa a função deleteProduct', () => {
+    it('se é possiver deletar um produto', async () => {
+      sinon.stub(productsModel, 'deleteProduct').resolves(1);
+
+      const result = await productsService.deleteProduct(1);
+
+      expect(result).to.be.equal(1);
+    });
+    afterEach(sinon.restore);
+  });
 });

@@ -133,4 +133,21 @@ describe('Testes da camada Controller', () => {
     });
     afterEach(sinon.restore);
   });
+
+  describe('Testa a função deleteProduct', () => {
+    it('se é possiver deletar um produto', async () => {
+      const req = { params: { id: 1 } };
+      const res = {};
+
+      sinon.stub(productsService, 'deleteProduct').resolves(1);
+
+      res.status = sinon.stub().returns(res);
+      res.send = sinon.stub().returns();
+
+      await productsController.deleteProduct(req, res);
+
+      expect(res.status).to.have.been.calledWith(204)
+    });
+    afterEach(sinon.restore);
+  });
 });
