@@ -53,4 +53,15 @@ describe('Testa a camada Model', () => {
     });
     afterEach(sinon.restore);
   });
+
+  describe('Testa a função saveProducts', () => {
+    it('se é possivel adicionar um produto', async () => {
+      sinon.stub(connection, 'execute').resolves(mocksModel.mockInsertId);
+
+      const result = await productsModel.saveProduct('ProdutoX');
+      
+      expect(result).to.be.equal(4);
+    });
+    afterEach(sinon.restore);
+  });
 });

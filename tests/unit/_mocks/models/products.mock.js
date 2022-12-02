@@ -16,8 +16,11 @@ const mockGetByName = [
   }
 ];
 
+const mockInsertId = [{ insertId: 4 }];
+
 module.exports = {
   mockAllProducts,
   mockOneProduct,
   mockGetByName,
+  mockInsertId,
 };

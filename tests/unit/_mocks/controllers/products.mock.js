@@ -37,9 +37,18 @@ const mockGetByName = {
   ]
 };
 
+const mockSaveProduct = {
+  type: null,
+  message: {
+    "id": 4,
+    "name": "ProdutoX"
+  },
+};
+
 module.exports = {
   mockGetProducts,
   mockGetByIdErr,
   mockGetById,
   mockGetByName,
+  mockSaveProduct,
 };

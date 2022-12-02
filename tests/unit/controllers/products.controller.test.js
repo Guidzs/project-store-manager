@@ -94,4 +94,22 @@ describe('Testes da camada Controller', () => {
     });
     afterEach(sinon.restore);
   });
+
+  describe('Testa a função saveProducts', () => {
+    it('se é possivel adicionar um produto', async () => {
+      const req = { body: { name: 'ProdutoX' } };
+      const res = {};
+
+      sinon.stub(productsService, 'saveProduct').resolves(mocksController.mockSaveProduct);
+
+      res.status = sinon.stub().returns(res);
+      res.json = sinon.stub().returns();
+
+      await productsController.saveProduct(req, res);
+
+      expect(res.status).to.have.been.calledWith(201);
+      expect(res.json).to.have.been.calledWith(mocksController.mockSaveProduct.message);
+    });
+    afterEach(sinon.restore);
+  });
 });
