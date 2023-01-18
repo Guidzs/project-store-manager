@@ -23,7 +23,7 @@ describe('Testa a camada Service', () => {
     it('se é possivel chamar um produto', async () => {
       sinon.stub(productsModel, 'findAll').resolves(mocksService.mockOneProduct);
 
-      const product = await productsService.findAll(1);
+      const product = await productsService.getProductById(1);
 
       expect(product).to.be.an('object');
       expect(product.message).to.be.deep.equal(mocksService.mockOneProduct);
